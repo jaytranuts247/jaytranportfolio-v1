@@ -3,12 +3,23 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@styled-icons/boxicons-logos": "^10.23.0",
+    "@styled-icons/boxicons-regular": "^10.23.0",
+    "@styled-icons/entypo": "^10.18.0",
+    "@styled-icons/evaicons-solid": "^10.18.0",
+    "@styled-icons/fa-brands": "^10.26.0",
+    "@styled-icons/foundation": "^10.18.0",
+    "@styled-icons/simple-icons": "^10.27.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "framer-motion": "^3.3.0",
+    "lodash": "^4.17.20",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-intersection-observer": "^8.31.0",
     "react-scripts": "4.0.1",
+    "styled-components": "^5.2.1",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
