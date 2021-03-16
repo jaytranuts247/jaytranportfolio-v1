@@ -88,42 +88,43 @@ const HeroWrapper = styled.div`
 	}
 `;
 
-const arrowItem = {
-	hidden: (y) => ({
-		opacity: 0,
-		rotate: 45,
-		y: -10 - y,
-	}),
-	show: {
-		opacity: 1,
-		y: 0,
-		transition: {
-			repeat: Infinity,
-			repeatDelay: 0.5,
-			duration: 1,
-		},
-	},
-};
+// const arrowItem = {
+// 	hidden: (y) => ({
+// 		opacity: 0,
+// 		rotate: 45,
+// 		y: -10 - y,
+// 	}),
+// 	show: {
+// 		opacity: 1,
+// 		y: 0,
+// 		transition: {
+// 			repeat: Infinity,
+// 			repeatDelay: 1,
+// 			duration: 1,
+// 			delay: 0.5,
+// 		},
+// 	},
+// };
 
-const arrowVariants = {
-	hidden: {
-		transition: {
-			staggerChildren: 0.5,
-			delayChildren: 0.7,
-			repeatDelay: 1,
-		},
-	},
-	show: {
-		transition: {
-			staggerChildren: 1,
-			delayChildren: 1,
-			repeat: Infinity,
-			repeatDelay: 0.5,
-			delay: 0.2,
-			when: "afterChildren",
-		},
-	},
-};
+// const arrowVariants = {
+// 	hidden: {
+// 		transition: {
+// 			staggerChildren: 0.5,
+// 			delayChildren: 0.7,
+// 			repeatDelay: 0.2,
+// 		},
+// 	},
+// 	show: {
+// 		transition: {
+// 			staggerChildren: 1,
+// 			delayChildren: 1,
+// 			// repeat: Infinity,
+// 			// repeatDelay: 0.5,
+// 			delay: 0.2,
+// 			when: "afterChildren",
+// 		},
+// 	},
+// };
 
 const HeroSection = ({
 	animationDuration,
@@ -173,18 +174,8 @@ const HeroSection = ({
 						</motion.div>
 					))}
 			</HeroWrapper>
-			<StyledArrow variants={arrowVariants} initial="hidden" animate="show">
-				<StyledSpan key={0} variants={arrowItem} y={0}></StyledSpan>
-				<StyledSpan key={1} variants={arrowItem} y={5}></StyledSpan>
-				<StyledSpan key={2} variants={arrowItem} y={10}></StyledSpan>
-			</StyledArrow>
-		</StyledSection>
-	);
-};
-
-export default HeroSection;
-/*
-	<StyledSpan
+			<StyledArrow>
+				<StyledSpan
 					initial={{ rotate: 45 }}
 					animate={{ y: [-20, -10, 0], opacity: [0, 1, 0] }}
 					transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
@@ -196,7 +187,7 @@ export default HeroSection;
 						repeat: Infinity,
 						duration: 2,
 						ease: "linear",
-						delay: 0.2,
+						delay: 0.4,
 					}}
 				></StyledSpan>
 				<StyledSpan
@@ -206,7 +197,20 @@ export default HeroSection;
 						repeat: Infinity,
 						duration: 2,
 						ease: "linear",
-						delay: 0.4,
+						delay: 0.8,
 					}}
 				></StyledSpan>
+			</StyledArrow>
+		</StyledSection>
+	);
+};
+
+export default HeroSection;
+
+/*
+<StyledArrow variants={arrowVariants} initial="hidden" animate="show">
+<StyledSpan key={0} variants={arrowItem} y={0}></StyledSpan>
+<StyledSpan key={1} variants={arrowItem} y={5}></StyledSpan>
+<StyledSpan key={2} variants={arrowItem} y={10}></StyledSpan>
+</StyledArrow>
 */
