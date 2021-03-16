@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { motion, useAnimation } from "framer-motion";
 import _ from "lodash";
 import Project from "./Project.component";
-import { techsMap, projectListInfo } from "../../utilities/utils";
+import { projectListInfo } from "../../utilities/utils";
 
 import { Github } from "@styled-icons/fa-brands/Github";
 import { LinkAlt } from "@styled-icons/boxicons-regular/LinkAlt";
@@ -35,6 +35,7 @@ const StyledSection = styled.section`
 		max-width: 100%;
 		width: 90%;
 		flex: 1 0 100%;
+		white-space: nowrap;
 
 		span {
 			font-size: 1.8rem;
@@ -65,138 +66,6 @@ const StyledSection = styled.section`
 	}
 `;
 
-const StyledContainer = styled.div`
-	position: relative;
-	/* ${({ theme }) => theme.mixins.flexCenter}; */
-	display: flex;
-	flex-flow: row wrap;
-	/* height: auto; */
-	/* min-height: 550px; */
-	width: 100%;
-	margin: 7rem 0 5rem 0;
-`;
-
-const StyledLeft = styled.div`
-	display: flex;
-	/* height: auto; */
-	flex: 1 0 40%;
-	color: ${({ theme }) => theme.color.textPrimary + "b2"};
-
-	& > div {
-		width: 88%;
-		/* height: auto; */
-		min-height: 300px;
-		margin: 0 auto;
-		padding: 1.3rem 0;
-
-		display: flex;
-		justify-content: space-between;
-		align-items: flex-start;
-		flex-direction: column;
-
-		hr {
-			width: 100%;
-		}
-
-		& > h1 {
-			font-size: 2rem;
-			font-weight: 700;
-		}
-
-		& > p {
-			margin: 3rem 1rem 3rem 0;
-			font-size: 1.3rem;
-			font-weight: 500;
-		}
-
-		& > div {
-			ul {
-				list-style: none;
-				font-size: 1.3rem;
-				font-weight: 600;
-				padding: 1rem 0;
-				font-family: var(--font-mono);
-
-				li {
-					display: inline-flex;
-					padding: 5px 10px 5px 10px;
-					line-height: 1.3;
-					align-items: center;
-					border: 2px solid #011627b2;
-					background: rgb(51 55 105 / 60%);
-					border-radius: 50px;
-					margin-right: 15px;
-					margin: 7px 5px 0rem 0;
-
-					img {
-						height: 1.9rem;
-						width: 1.9rem;
-						margin-right: 10px;
-					}
-				}
-
-				/* li:not(:first-child) {
-					margin-left: 15px;
-				} */
-			}
-		}
-
-		.project-link {
-			padding: 1.5rem 0;
-
-			& > span {
-				margin-left: 10px;
-				line-height: 1.3;
-				font-size: 1.5rem;
-				font-weight: 600;
-				font-family: var(--font-mono);
-			}
-		}
-	}
-`;
-
-const StyledRight = styled.div`
-	display: flex;
-	align-items: center;
-	/* height: auto; */
-	/* min-height: 400px; */
-	flex: 1 0 60%;
-	/* width: 100%; */
-
-	div.project-photo {
-		height: 337.5px;
-		width: 600px;
-		position: relative;
-		border-radius: 20px;
-		transition: all 0.4s ease-out;
-
-		img {
-			height: 100%;
-			width: 100%;
-			object-fit: cover;
-		}
-
-		&::before {
-			content: " ";
-			position: absolute;
-			top: 0;
-			left: 0;
-			height: 337.5px;
-			width: 600px;
-			border-radius: 20px;
-			/* background: ${({ theme }) => theme.color.Secondary + "b2"}; */
-			background: linear-gradient(90deg, #d53369b2 0%, #daae51b2 100%);
-			opacity: 1;
-			transition: all 0.8s ease-out;
-		}
-
-		&:hover::before {
-			/* background: ${({ theme }) => theme.color.Secondary + "00"}; */
-			opacity: 0;
-		}
-	}
-`;
-
 const variants = {
 	visible: (i) => ({
 		opacity: 1,
@@ -219,7 +88,7 @@ const ProjectSection = () => {
 	}, [controls, inView]);
 
 	return (
-		<StyledSection>
+		<StyledSection id="projects">
 			<motion.h1
 				ref={ref}
 				animate={controls}
@@ -231,7 +100,9 @@ const ProjectSection = () => {
 			</motion.h1>
 			{projectListInfo.map((projectItem, i) => (
 				<div>
-					<Project key={i} i={i} projectItem={projectItem} />
+					{projectItem.featuredShow && (
+						<Project key={i} i={i} projectItem={projectItem} />
+					)}
 				</div>
 			))}
 		</StyledSection>

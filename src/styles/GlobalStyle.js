@@ -90,7 +90,7 @@ const GlobalStyle = createGlobalStyle`
     }
     .medium-heading {
       margin: 0;
-      font-size: clamp(40px, 7vw, 60px);
+      font-size: clamp(40px, 5.5vw, 60px);
     }
 
     button {

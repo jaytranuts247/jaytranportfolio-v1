@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 import { Marker } from "@styled-icons/foundation/Marker";
 import {
 	Facebook,
@@ -22,11 +24,11 @@ const StyledMarker = styled(Marker)`
 	z-index: 3;
 
 	&:hover {
-		transform: translateY(-5px);
+		/* transform: translateY(-5px); */
 	}
 	&:hover ~ div.my-base {
-		opacity: 1 !important;
-		transform: translateY(-5px) !important;
+		/* opacity: 1 !important;
+		transform: translateY(-5px) !important; */
 	}
 `;
 const StyledShadow = styled(Marker)`
@@ -39,6 +41,7 @@ const StyledShadow = styled(Marker)`
 	transform: skewX(-50deg) rotateX(10deg);
 	transform-origin: bottom center;
 	z-index: 1;
+	transition: all 0.3s ease;
 `;
 
 const StyledFooter = styled.footer`
@@ -61,6 +64,7 @@ const StyledFooter = styled.footer`
 		max-width: 100%;
 		width: 90%;
 		flex: 1 0 100%;
+		white-space: nowrap;
 
 		span {
 			font-size: 1.8rem;
@@ -90,10 +94,13 @@ const StyledFooter = styled.footer`
 		}
 	}
 `;
-const Container = styled.div`
+const Container = styled(motion.div)`
 	display: flex;
 	position: relative;
 	padding: 50px;
+	@media screen and (max-width: 768px) {
+		flex-flow: row wrap;
+	}
 `;
 const StyledLeft = styled.div`
 	display: flex;
@@ -106,6 +113,17 @@ const StyledLeft = styled.div`
 		position: relative;
 		display: flex;
 		margin: 5rem auto 1.5rem auto;
+
+		&:hover div.my-base {
+			opacity: 1 !important;
+			transform: translateY(-5px) !important;
+		}
+		&:hover div#location-marker svg:first-child {
+			transform: translateY(-5px) !important;
+		}
+		&:hover div#location-marker svg:nth-child(2) {
+			transform: skewX(-50deg) rotateX(10deg) translate(-5px, -10px) !important;
+		}
 
 		img {
 			width: 300px;
@@ -214,6 +232,8 @@ const StyledLeft = styled.div`
 		border: 1px solid ${({ theme }) => theme.color.textPrimary + "b2"};
 		border-radius: 50px;
 		margin: 1rem 0;
+		z-index: 3;
+		background: ${({ theme }) => theme.color.background};
 	}
 `;
 
@@ -225,10 +245,14 @@ const StyledRight = styled.div`
 	color: ${({ theme }) => theme.color.textPrimary + "b2"};
 	font-weight: 600;
 
+	@media screen and (max-width: 768px) {
+		margin: 20px 0;
+	}
+
 	& > h2 {
 		margin: 1.8rem auto;
 		color: ${({ theme }) => theme.color.textSecondary};
-		font-size: 1.8rem;
+		font-size: 2rem;
 		font-weight: 600;
 		font-family: var(--font-mono);
 	}
@@ -240,7 +264,7 @@ const StyledRight = styled.div`
 		margin: 0 auto;
 
 		label {
-			font-size: 1.3rem;
+			font-size: 1.5rem;
 			font-weight: 600;
 			margin: 10px 0 5px 0;
 		}
@@ -249,7 +273,7 @@ const StyledRight = styled.div`
 		input::placeholder,
 		input:placeholder-shown,
 		textarea {
-			font-size: 1.3rem;
+			font-size: 1.5rem;
 			letter-spacing: 1px;
 			font-family: var(--font-mono);
 			font-weight: 600;
@@ -305,7 +329,7 @@ const StyledRight = styled.div`
 		}
 
 		button {
-			font-size: 1.3rem;
+			font-size: 1.8rem;
 			font-weight: 600;
 			line-height: 1.3;
 			border: none;
@@ -350,8 +374,72 @@ const Drafted = styled.div`
 	margin: 3rem 0 0 0;
 `;
 
+const variants = {
+	visible: (i) => ({
+		opacity: 1,
+		y: 0,
+		transition: { duration: 0.8, delay: i * 2 },
+	}),
+	hidden: {
+		opacity: 0,
+		y: 20,
+	},
+	hiddenMarker: {
+		opacity: 0,
+		y: -30,
+	},
+	visibleMarker: {
+		opacity: 1,
+		y: 0,
+		transition: {
+			duration: 0.8,
+			type: "spring",
+			stiffness: 400,
+			damping: 40,
+		},
+	},
+};
+
+const markerVariants = {
+	hidden: {
+		opacity: 0,
+		y: 30,
+	},
+	visible: {
+		opacity: 1,
+		y: 0,
+		transition: {
+			duration: 0.8,
+			// type: "spring",
+			// stiffness: 400,
+			// damping: 40,
+		},
+	},
+};
+
 const Footer = () => {
 	const [status, setStatus] = useState("");
+	const [isMounted, setIsMounted] = useState(false);
+	const { ref, inView } = useInView();
+	const controls = useAnimation();
+	const controlsMarker = useAnimation();
+
+	useEffect(() => {
+		// const sequence = async () => {
+		// 	if (inView) {
+		// 		console.log("sequence animation");
+		// 		await controls.start("visible");
+		// 		await controlsMarker.start("visible");
+		// 	}
+		// };
+		// sequence();
+		if (inView) controls.start("visible");
+
+		// const timeout = setTimeout(() => {
+		// 	setIsMounted(true);
+		// }, 2000 + 800 + 200);
+		// return () => clearTimeout(timeout);
+	}, [controls, controlsMarker, inView]);
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
@@ -367,9 +455,9 @@ const Footer = () => {
 				method: "POST",
 				body: data,
 			});
-			const resJson = await res.json();
-			console.log(resJson);
-			if (resJson.ok === true) {
+			const jsonRes = await res.json();
+			console.log(jsonRes);
+			if (jsonRes.ok === true) {
 				setStatus("SUCCESS");
 			} else {
 				setStatus("FAILED");
@@ -381,14 +469,38 @@ const Footer = () => {
 
 	return (
 		<StyledFooter>
-			<h1>
-				<span>04. </span> Connect With Me !!
-			</h1>
-			<Container>
+			<motion.h1
+				custom={0}
+				animate={controls}
+				variants={variants}
+				initial="hidden"
+			>
+				<span>05. </span> Connect With Me !!
+			</motion.h1>
+
+			<Container
+				ref={ref}
+				custom={1}
+				animate={controls}
+				variants={variants}
+				initial="hidden"
+			>
 				<StyledLeft>
 					<div className="location">
-						<StyledMarker />
-						<StyledShadow />
+						<motion.div
+							custom={2}
+							animate={controls}
+							initial="hidden"
+							variants={variants}
+							key="marker"
+							style={{
+								display: "flex",
+							}}
+							id="location-marker"
+						>
+							<StyledMarker />
+							<StyledShadow />
+						</motion.div>
 						<img
 							src="../../../svg/Flag-map_of_North_Carolina.svg"
 							alt="location"
@@ -411,11 +523,11 @@ const Footer = () => {
 							</li>
 							<li>
 								<a href="#">
-									<Instagram size="24" title="faceInstagrambook" />
+									<Instagram size="24" title="Instagrambook" />
 								</a>
 							</li>
 							<li>
-								<a href="#">
+								<a href="https://github.com/jaytranuts247">
 									<Github size="24" title="Github" />
 								</a>
 							</li>
@@ -481,20 +593,3 @@ const Footer = () => {
 };
 
 export default Footer;
-
-/*
-Hi, 
-My name is Rosetta>
-
-I am writing this letter to show my interest in your skills and capabilities.
-
-Please let me know what is the best time that we can have discussion on your job opportunities. 
-
-Thanks, 
-
-Regards,
-
-David
-
-
-*/

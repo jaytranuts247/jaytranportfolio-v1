@@ -6,14 +6,15 @@ import AboutMeSection from "./components/sections/AboutMeSection.component";
 import SkillsSection from "./components/sections/SkillsSection.component";
 import ProjectSection from "./components/sections/ProjectSection.component";
 import Footer from "./components/sections/Footer.component";
-
-import Navbar from "./components/Navbar";
+import OtherProjectSection from "./components/sections/OtherProjects.component";
+import Navbar from "./components/Navbar.component";
 
 import styled, { ThemeProvider } from "styled-components";
 
 import theme from "./styles/theme";
 
 import "./App.css";
+import OtherProjects from "./components/sections/OtherProjects.component";
 
 const StyledContent = styled.div`
 	display: flex;
@@ -49,6 +50,7 @@ function App() {
 						<AboutMeSection {...settings} />
 						<SkillsSection />
 						<ProjectSection />
+						<OtherProjectSection />
 					</StyledMain>
 					<Footer />
 				</StyledContent>

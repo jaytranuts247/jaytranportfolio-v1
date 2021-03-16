@@ -16,69 +16,29 @@ const StyledLink = styled(LinkAlt)`
 	color: ${({ theme }) => theme.color.Secondary};
 `;
 
-const StyledSection = styled.section`
-	position: relative;
-	display: flex;
-	/* height: auto; */
-	width: 100%;
-	flex-direction: column;
-
-	& > h1 {
-		font-size: 2.3rem;
-		font-weight: 700;
-		font-family: var(--font-mono);
-		color: ${({ theme }) => theme.color.textSecondary};
-		/* margin-bottom: 3rem; */
-		margin: 3rem auto;
-		display: flex;
-		align-items: center;
-		max-width: 100%;
-		width: 90%;
-		flex: 1 0 100%;
-
-		span {
-			font-size: 1.8rem;
-			margin-right: 10px;
-		}
-
-		&::before {
-			content: " ";
-			height: 1px;
-			display: flex;
-			flex: 1 1 30%;
-			margin-right: 20px;
-			top: 4px;
-			position: relative;
-			background: ${({ theme }) => theme.color.Secondary};
-		}
-
-		&::after {
-			content: " ";
-			height: 1px;
-			display: flex;
-			flex: 1 1 30%;
-			margin-left: 20px;
-			top: 4px;
-			position: relative;
-			background: ${({ theme }) => theme.color.Secondary};
-		}
-	}
-`;
-
 const StyledContainer = styled.div`
 	position: relative;
 	/* ${({ theme }) => theme.mixins.flexCenter}; */
 	display: flex;
-	flex-flow: row wrap;
+	flex-flow: row nowrap;
 	/* height: auto; */
 	/* min-height: 550px; */
 	width: 100%;
 	margin: 7rem 0 5rem 0;
+
+	@media screen and (max-width: 992px) {
+		padding: 0 80px;
+	}
+	@media screen and (max-width: 768px) {
+		flex-flow: row wrap;
+		justify-content: center;
+		align-items: center;
+		padding: 0 50px;
+	}
 `;
 
 const StyledLeft = styled.div`
 	display: flex;
-	/* height: auto; */
 	flex: 1 0 40%;
 	color: ${({ theme }) => theme.color.textPrimary + "b2"};
 
@@ -105,14 +65,20 @@ const StyledLeft = styled.div`
 
 		& > p {
 			margin: 3rem 1rem 3rem 0;
-			font-size: 1.3rem;
-			font-weight: 500;
+			font-size: 1.5rem;
+			font-weight: 400;
+			width: 170%;
+			z-index: 3;
+			background: #2e3c48d9;
+			line-height: 1.3;
+			padding: 15px;
+			border-radius: 5px;
 		}
 
 		& > div {
 			ul {
 				list-style: none;
-				font-size: 1.3rem;
+				font-size: 1.5rem;
 				font-weight: 600;
 				padding: 1rem 0;
 				font-family: var(--font-mono);
@@ -127,6 +93,8 @@ const StyledLeft = styled.div`
 					border-radius: 50px;
 					margin-right: 15px;
 					margin: 7px 5px 0rem 0;
+					outline: none;
+					border: none;
 
 					img {
 						height: 1.9rem;
@@ -142,14 +110,39 @@ const StyledLeft = styled.div`
 		}
 
 		.project-link {
-			padding: 1.5rem 0;
+			padding: 1.5rem 0px;
+			a {
+				padding: 10px;
+				text-decoration: none;
+				color: ${({ theme }) => theme.color.textPrimary + "b2"};
+				border-radius: 50px;
+				& span {
+					margin-left: 10px;
+					line-height: 1.3;
+					font-size: 1.5rem;
+					font-weight: 600;
+					font-family: var(--font-mono);
+					cursor: pointer;
+				}
+				&:hover {
+					background: rgb(51 55 105 / 60%);
+				}
+			}
+		}
+	}
 
-			& > span {
-				margin-left: 10px;
-				line-height: 1.3;
-				font-size: 1.5rem;
-				font-weight: 600;
-				font-family: var(--font-mono);
+	@media screen and (max-width: 768px) {
+		flex: 1 0 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 7;
+		/* background: ${({ theme }) => theme.color.Primary}; */
+
+		& > div {
+			padding: 30px 40px;
+			& > p {
+				width: 90%;
 			}
 		}
 	}
@@ -162,6 +155,7 @@ const StyledRight = styled.div`
 	/* min-height: 400px; */
 	flex: 1 0 60%;
 	/* width: 100%; */
+	justify-content: center;
 
 	div.project-photo {
 		height: 337.5px;
@@ -174,7 +168,7 @@ const StyledRight = styled.div`
 		img {
 			height: 100%;
 			width: 100%;
-			object-fit: fil;
+			object-fit: cover;
 			transition: all 0.4s ease-out;
 		}
 
@@ -198,6 +192,46 @@ const StyledRight = styled.div`
 		}
 		&:hover > img {
 			transform: scale(0.99);
+		}
+	}
+	@media screen and (max-width: 992px) {
+		div.project-photo {
+			width: 100%;
+			height: auto;
+
+			&::before {
+				width: 100%;
+				height: 100%;
+			}
+		}
+	}
+	@media screen and (max-width: 768px) {
+		flex: 1 0 100%;
+
+		div.project-photo {
+			width: 100%;
+			height: auto;
+
+			&::before {
+				width: 100%;
+				height: 100%;
+				z-index: 3;
+				background: linear-gradient(90deg, #d53369cc 0%, #daae51cc 100%);
+			}
+			&::after {
+				content: " ";
+				position: absolute;
+				top: 0;
+				left: 0;
+				height: 100%;
+				width: 100%;
+				border-radius: 40px;
+
+				background: ${({ theme }) => theme.color.Primary};
+				opacity: 0.6;
+				transition: all 0.8s ease-out;
+				z-index: 5;
+			}
 		}
 	}
 `;
@@ -270,9 +304,15 @@ const Project = ({ projectItem, i }) => {
 							</ul>
 						</div>
 						<div className="project-link">
-							<StyledGithub size="20" title="Github" />
-							<span>Github - </span>
-							<StyledLink size="20" title="Link" /> <span>Demo</span>
+							<a href={projectItem.links.github}>
+								<StyledGithub size="20" title="Github" />
+								<span>Github</span>
+							</a>
+							<span> - </span>
+							<a href={projectItem.links.demo}>
+								<StyledLink size="20" title="Link" />
+								<span>Demo</span>
+							</a>
 						</div>
 					</div>
 				</StyledLeft>

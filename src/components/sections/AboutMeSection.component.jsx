@@ -6,7 +6,7 @@ import { useInView } from "react-intersection-observer";
 const StyledSection = styled.section`
 	${({ theme }) => theme.mixins.flexBetween};
 	position: relative;
-	padding: 50px;
+	padding: 80px;
 	height: auto;
 	min-height: 550px;
 	& > * {
@@ -14,6 +14,10 @@ const StyledSection = styled.section`
 	}
 	color: #fff;
 	margin: 100px 0;
+
+	@media screen and (max-width: 768px) {
+		flex-flow: row wrap;
+	}
 `;
 
 const StyledLeft = styled.div`
@@ -55,9 +59,24 @@ const StyledLeft = styled.div`
 	}
 
 	p {
-		font-size: 1.4rem;
+		font-size: 1.5rem;
 		font-weight: 400;
-		line-height: 1.5;
+		/* font-family: var(--font-mono); */
+		line-height: 1.6;
+		&:not(:first-child) {
+			margin-top: 10px;
+		}
+
+		#react-developer {
+			color: ${({ theme }) => theme.color.Secondary};
+		}
+		#base-location {
+			color: ${({ theme }) => theme.color.Secondary};
+		}
+		#mern-stack {
+			color: ${({ theme }) => theme.color.Secondary};
+			letter-spacing: 1px;
+		}
 	}
 `;
 
@@ -131,6 +150,37 @@ const StyledRight = styled.div`
 	}
 `;
 
+const one = (
+	<p>
+		" Hello!! I am Jay Tran. I am a self-taught{" "}
+		<span id="react-developer">React Developer</span> , based in{" "}
+		<span id="base-location">Raleigh, North Carolina</span> area.
+	</p>
+);
+const two = (
+	<p>
+		I graduated and worked several years as Electrical & Instrumentation
+		Commissioning Engineer in Oil & Gas Field. I also worked as Embedded Test
+		Engineer using C/C++, involve in UT/IT for automotive systems in Vietnam.
+	</p>
+);
+const three = (
+	<p>
+		I found myself having interest and joy in programming and building things
+		associate with computers. I decided to learn to build website and Web app,
+		starting with <span id="mern-stack">MERN Stack</span>.
+	</p>
+);
+const four = (
+	<p>
+		I am looking for developing my skills in both front-end and back-end to
+		building beautiful, responsive, comprehehensive Websites and Webapps that
+		deliver values to both end-users and businesses.
+	</p>
+);
+
+const aboutMeIntro = [one, two, three, four];
+
 const variants = {
 	visible: (i) => ({
 		opacity: 1,
@@ -167,25 +217,9 @@ const AboutMeSection = ({ animationDuration, animationDelay }) => {
 				>
 					About Me
 				</motion.h2>
-				<p>
-					Hi, I am Jay Tran. I am a self-taught React Developer, based in
-					Raleigh, North Carolina area.
-				</p>
-				<p>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas
-					beatae sint officia culpa consectetur fuga libero fugit! Cupiditate,
-					minus? Est illo nulla temporibus earum, velit pariatur quibusdam esse
-					corporis voluptatem incidunt placeat nostrum, ut explicabo.
-				</p>
-				<p>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat quas
-					eaque soluta, quis ipsam laborum consequuntur, nostrum perferendis et
-					nisi commodi ab magni provident unde?
-				</p>
-				<p>
-					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Saepe
-					debitis sit molestias enim deleniti. Quidem?
-				</p>
+				{aboutMeIntro.map((item, id) => (
+					<p key={id}>{item}</p>
+				))}
 			</StyledLeft>
 			<StyledRight>
 				<motion.div

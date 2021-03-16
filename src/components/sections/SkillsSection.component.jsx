@@ -64,7 +64,7 @@ const StyledContainer = styled.div`
 	flex-flow: row wrap;
 	div {
 		/* min-height: 200px; */
-		width: 200px;
+		width: clamp(140px, 20vw, 200px);
 		display: flex;
 		flex-direction: column;
 		align-items: center;

@@ -18,10 +18,14 @@ const HeroWrapper = styled.div`
 	/* padding: 0 100px; */
 	min-height: auto;
 	flex-direction: column;
+	padding: 2rem;
+	@media screen and (max-width: 992px) {
+		width: 90%;
+	}
 	h4 {
 		color: ${({ theme }) => theme.color.Secondary + "ff"};
 		margin: 10px 0 30px 10px;
-		font-size: clamp(1rem, 1vw, 40px);
+		font-size: clamp(15px, 1.3vw, 40px);
 	}
 
 	h1 {
@@ -38,11 +42,15 @@ const HeroWrapper = styled.div`
 
 	p {
 		color: ${({ theme }) => theme.color.textPrimary + "b2"};
-		font-size: 2rem;
-		line-height: 1.3;
-		width: 70%;
-		margin-top: 20px;
-		font-size: clamp(1rem, 0.8vw, 30px);
+		line-height: 1.5;
+		width: 50%;
+		margin-top: 40px;
+		font-size: clamp(12px, 1.3vw, 30px);
+		font-family: var(--font-mono);
+		font-weight: 600;
+		@media screen and (max-width: 992px) {
+			width: 100%;
+		}
 	}
 `;
 
@@ -54,8 +62,8 @@ const HeroSection = ({
 	const [isMounted, setIsMounted] = useState(false);
 
 	useEffect(() => {
-		setTimeout(() => setIsMounted(true), navAnimationTime);
-		return () => clearTimeout();
+		let timer = setTimeout(() => setIsMounted(true), navAnimationTime);
+		return () => clearTimeout(timer);
 	}, []);
 
 	const sayHi = <h4>Hi, My name is</h4>;
@@ -69,13 +77,13 @@ const HeroSection = ({
 	);
 	const introParagraph = (
 		<p>
-			I love building things on internet. Lorem, ipsum dolor sit amet
-			consectetur adipisicing elit. Qui enim ipsum in a sint excepturi iusto
-			quidem totam impedit doloribus?
+			I am currently residing in Raleigh, NC area. I love to build things on
+			internet that help communities, and help bussinesses grow.
 		</p>
 	);
 
 	const introList = [sayHi, name, introHead, introParagraph];
+
 	return (
 		<StyledSection>
 			<HeroWrapper>
