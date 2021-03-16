@@ -29,7 +29,7 @@ const StyledSection = styled.section`
 
 const StyledArrow = styled(motion.div)`
 	position: absolute;
-	bottom: 5%;
+	bottom: 3%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 `;
