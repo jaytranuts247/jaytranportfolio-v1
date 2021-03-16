@@ -11,8 +11,14 @@ import { default as Card } from "../Card.component";
 const StyledSection = styled.section`
 	display: flex;
 	justify-content: center;
+
 	flex-flow: column nowrap;
 	width: 100%;
+
+	@media screen and (max-width: 992px) {
+		align-items: center;
+	}
+
 	& > h1 {
 		font-size: 2.3rem;
 		font-weight: 700;
@@ -59,11 +65,13 @@ const StyledSection = styled.section`
 const StyledContainer = styled(motion.div)`
 	display: flex;
 	align-items: center;
-	justify-content: flex-start;
+	justify-content: center;
 	position: relative;
 	width: 100%;
 	flex-flow: row wrap;
-
+	@media screen and (max-width: 992px) {
+		width: 92%;
+	}
 	/* & > * {
 		flex: 1 1 33.33333%;
 	} */

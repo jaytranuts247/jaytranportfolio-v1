@@ -17,7 +17,7 @@ const StyledLink = styled(LinkAlt)`
 
 const StyledContainer = styled.div`
 	display: flex;
-
+	justify-content: center;
 	/* justify-content: center;
 	align-items: baseline; */
 	flex-direction: column;
@@ -34,6 +34,13 @@ const StyledContainer = styled.div`
 	line-height: 1.5;
 	box-shadow: 0 10px 30px -15px #040404;
 	transition: all 0.3s ease;
+	@media screen and (max-width: 992px) {
+		flex: 1 1 90%;
+		width: auto !important;
+	}
+	@media screen and (max-width: 600px) {
+		flex: 0 1 300px;
+	}
 
 	&:hover {
 		transform: translateY(-5px);
