@@ -8,6 +8,40 @@ const StyledSection = styled.section`
 	/* padding: 0 100px; */
 	width: 100%;
 	height: 100vh;
+
+	.arrow-down {
+		position: absolute;
+		bottom: 5%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+
+		span {
+			display: block;
+			width: 10px;
+			height: 10px;
+			border-bottom: 2px solid ${({ theme }) => theme.color.Secondary};
+			border-right: 2px solid ${({ theme }) => theme.color.Secondary};
+			transform: rotate(45deg);
+			margin: -3px;
+		}
+	}
+`;
+
+const StyledArrow = styled(motion.div)`
+	position: absolute;
+	bottom: 5%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+`;
+
+const StyledSpan = styled(motion.span)`
+	display: block;
+	width: 10px;
+	height: 10px;
+	border-bottom: 2px solid ${({ theme }) => theme.color.Secondary};
+	border-right: 2px solid ${({ theme }) => theme.color.Secondary};
+	transform: rotate(45deg);
+	margin: -3px;
 `;
 
 const HeroWrapper = styled.div`
@@ -53,6 +87,43 @@ const HeroWrapper = styled.div`
 		}
 	}
 `;
+
+const arrowItem = {
+	hidden: (y) => ({
+		opacity: 0,
+		rotate: 45,
+		y: -10 - y,
+	}),
+	show: {
+		opacity: 1,
+		y: 0,
+		transition: {
+			repeat: Infinity,
+			repeatDelay: 0.5,
+			duration: 1,
+		},
+	},
+};
+
+const arrowVariants = {
+	hidden: {
+		transition: {
+			staggerChildren: 0.5,
+			delayChildren: 0.7,
+			repeatDelay: 1,
+		},
+	},
+	show: {
+		transition: {
+			staggerChildren: 1,
+			delayChildren: 1,
+			repeat: Infinity,
+			repeatDelay: 0.5,
+			delay: 0.2,
+			when: "afterChildren",
+		},
+	},
+};
 
 const HeroSection = ({
 	animationDuration,
@@ -102,8 +173,40 @@ const HeroSection = ({
 						</motion.div>
 					))}
 			</HeroWrapper>
+			<StyledArrow variants={arrowVariants} initial="hidden" animate="show">
+				<StyledSpan key={0} variants={arrowItem} y={0}></StyledSpan>
+				<StyledSpan key={1} variants={arrowItem} y={5}></StyledSpan>
+				<StyledSpan key={2} variants={arrowItem} y={10}></StyledSpan>
+			</StyledArrow>
 		</StyledSection>
 	);
 };
 
 export default HeroSection;
+/*
+	<StyledSpan
+					initial={{ rotate: 45 }}
+					animate={{ y: [-20, -10, 0], opacity: [0, 1, 0] }}
+					transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
+				></StyledSpan>
+				<StyledSpan
+					initial={{ rotate: 45 }}
+					animate={{ y: [-20, -10, 0], opacity: [0, 1, 0] }}
+					transition={{
+						repeat: Infinity,
+						duration: 2,
+						ease: "linear",
+						delay: 0.2,
+					}}
+				></StyledSpan>
+				<StyledSpan
+					initial={{ rotate: 45 }}
+					animate={{ y: [-20, -10, 0], opacity: [0, 1, 0] }}
+					transition={{
+						repeat: Infinity,
+						duration: 2,
+						ease: "linear",
+						delay: 0.4,
+					}}
+				></StyledSpan>
+*/
