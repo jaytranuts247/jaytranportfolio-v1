@@ -419,7 +419,7 @@ const markerVariants = {
 
 const Footer = () => {
 	const [status, setStatus] = useState("");
-	const [isMounted, setIsMounted] = useState(false);
+	// const [isMounted, setIsMounted] = useState(false);
 	const { ref, inView } = useInView();
 	const controls = useAnimation();
 	const controlsMarker = useAnimation();

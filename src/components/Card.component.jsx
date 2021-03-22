@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import _ from "lodash";
-import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
 
 import { techsMap } from "../utilities/utils";
 import { LinkAlt } from "@styled-icons/boxicons-regular/LinkAlt";
@@ -153,24 +151,24 @@ const StyledContainer = styled.div`
 	}
 `;
 
-const cardVariants = {
-	show: {
-		y: 0,
-		opacity: 1,
-		transition: {
-			duration: 0.8,
-			ease: "easeOut",
-		},
-	},
-	hidden: {
-		y: 50,
-		opacity: 0,
-		transition: {
-			// y: { stiffness: 1000 },
-			duration: 0.1,
-		},
-	},
-};
+// const cardVariants = {
+// 	show: {
+// 		y: 0,
+// 		opacity: 1,
+// 		transition: {
+// 			duration: 0.8,
+// 			ease: "easeOut",
+// 		},
+// 	},
+// 	hidden: {
+// 		y: 50,
+// 		opacity: 0,
+// 		transition: {
+// 			// y: { stiffness: 1000 },
+// 			duration: 0.1,
+// 		},
+// 	},
+// };
 
 const Card = ({ image, name, intro, techs, links, forwardRef }) => {
 	return (

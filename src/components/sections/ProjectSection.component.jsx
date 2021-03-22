@@ -1,20 +1,11 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import { motion, useAnimation } from "framer-motion";
-import _ from "lodash";
+
 import Project from "./Project.component";
 import { projectListInfo } from "../../utilities/utils";
 
-import { Github } from "@styled-icons/fa-brands/Github";
-import { LinkAlt } from "@styled-icons/boxicons-regular/LinkAlt";
 import { useInView } from "react-intersection-observer";
-
-const StyledGithub = styled(Github)`
-	color: ${({ theme }) => theme.color.Quaternary};
-`;
-const StyledLink = styled(LinkAlt)`
-	color: ${({ theme }) => theme.color.Secondary};
-`;
 
 const StyledSection = styled.section`
 	position: relative;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 import GlobalStyle from "./styles/GlobalStyle";
 import HeroSection from "./components/sections/HeroSection.component";
@@ -14,7 +14,6 @@ import styled, { ThemeProvider } from "styled-components";
 import theme from "./styles/theme";
 
 import "./App.css";
-import OtherProjects from "./components/sections/OtherProjects.component";
 
 const StyledContent = styled.div`
 	display: flex;
