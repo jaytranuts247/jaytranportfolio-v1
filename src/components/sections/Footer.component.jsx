@@ -119,9 +119,6 @@ const StyledLeft = styled.div`
 		position: relative;
 		display: flex;
 		margin: 5rem auto 1.5rem auto;
-		@media screen and (max-width: 480px) {
-			width: 100%;
-		}
 
 		&:hover div.my-base {
 			opacity: 1 !important;

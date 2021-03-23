@@ -114,6 +114,10 @@ const StyledRight = styled.div`
 			left: 20px;
 			transform: translate(-20%, -20%);
 		}
+		@media screen and (max-width: 400px) {
+			top: 70px;
+			left: 45px;
+		}
 	}
 
 	div.profile {
