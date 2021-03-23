@@ -18,6 +18,9 @@ const StyledSection = styled.section`
 	@media screen and (max-width: 768px) {
 		flex-flow: row wrap;
 	}
+	@media screen and (max-width: 400px) {
+		padding: 60px 20px;
+	}
 `;
 
 const StyledLeft = styled.div`
@@ -98,6 +101,19 @@ const StyledRight = styled.div`
 
 		transition: all 0.3s ease;
 		z-index: -1;
+
+		@media screen and (max-width: 600px) {
+			position: absolute;
+			top: 75px;
+			left: 95px;
+			transform: translate(-20%, -20%);
+		}
+		@media screen and (max-width: 480px) {
+			position: absolute;
+			top: 75px;
+			left: 20px;
+			transform: translate(-20%, -20%);
+		}
 	}
 
 	div.profile {
@@ -146,6 +162,18 @@ const StyledRight = styled.div`
 			box-shadow: none;
 			top: calc(20% + 12px);
 			left: calc(10rem + 12px);
+		}
+		@media screen and (max-width: 600px) {
+			position: relative;
+			top: 0;
+			left: 0;
+
+			&:hover {
+				/* transform: translate(-20px, -20px);
+				 */
+				top: 20px;
+				left: 16px;
+			}
 		}
 	}
 `;

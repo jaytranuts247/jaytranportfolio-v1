@@ -101,6 +101,9 @@ const Container = styled(motion.div)`
 	@media screen and (max-width: 768px) {
 		flex-flow: row wrap;
 	}
+	@media screen and (max-width: 480px) {
+		padding: 50px 20px;
+	}
 `;
 const StyledLeft = styled.div`
 	display: flex;
@@ -108,11 +111,17 @@ const StyledLeft = styled.div`
 	justify-content: flex-start;
 	align-items: center;
 	flex: 1 1 100%;
+	@media screen and (max-width: 480px) {
+		width: 100%;
+	}
 
 	div.location {
 		position: relative;
 		display: flex;
 		margin: 5rem auto 1.5rem auto;
+		@media screen and (max-width: 480px) {
+			width: 100%;
+		}
 
 		&:hover div.my-base {
 			opacity: 1 !important;
@@ -174,6 +183,12 @@ const StyledLeft = styled.div`
 			list-style: none;
 			width: fit-content;
 
+			@media screen and (max-width: 480px) {
+				flex-flow: row wrap;
+				margin: 0 auto;
+				width: 70%;
+			}
+
 			li {
 				border: 1px solid ${({ theme }) => theme.color.Secondary + "b2"};
 				border-radius: 50%;
@@ -185,8 +200,10 @@ const StyledLeft = styled.div`
 				}
 				a#phone,
 				a#email {
+					/* background: ${({ theme }) => theme.color.Primary}; */
 					position: relative;
 					z-index: 3;
+
 					&::after {
 						content: " ";
 						position: absolute;
@@ -194,7 +211,7 @@ const StyledLeft = styled.div`
 						border-radius: 0 0 7px 0;
 						border-right: 1px solid ${({ theme }) => theme.color.Secondary};
 						border-bottom: 1px solid ${({ theme }) => theme.color.Secondary};
-						z-index: 1;
+						z-index: -1;
 					}
 				}
 
@@ -215,6 +232,19 @@ const StyledLeft = styled.div`
 						transform: translate(15%, 100%);
 						height: calc(38px + 10px + 10px + 19px + 19px);
 						width: 50px;
+					}
+				}
+
+				@media screen and (max-width: 600px) {
+					a#phone::after {
+						width: 50px;
+						height: 40px;
+						bottom: 12%;
+					}
+					a#email::after {
+						width: 80px;
+						bottom: 4px;
+						height: calc(38px + 10px + 19px + 19px);
 					}
 				}
 			}

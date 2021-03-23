@@ -35,6 +35,12 @@ const StyledContainer = styled.div`
 		align-items: center;
 		padding: 0 50px;
 	}
+	@media screen and (max-width: 600px) {
+		width: 92%;
+		margin: 30px auto;
+		align-items: flex-start;
+		padding: 0 20px;
+	}
 `;
 
 const StyledLeft = styled.div`
@@ -146,6 +152,28 @@ const StyledLeft = styled.div`
 			}
 		}
 	}
+	@media screen and (max-width: 600px) {
+		position: absolute;
+		flex: 1 0 92%;
+		max-height: 100%;
+		width: 100%;
+
+		& > div {
+			padding: 20px;
+			justify-content: center;
+			min-height: 0;
+			height: 261px;
+			/* max-height: 100% !important; */
+			& > p {
+				margin: 1rem 1rem 2rem 0;
+				flex: 1;
+			}
+		}
+	}
+	@media screen and (max-width: 480px) {
+		position: relative;
+		margin: 20px 0;
+	}
 `;
 
 const StyledRight = styled.div`
@@ -234,6 +262,11 @@ const StyledRight = styled.div`
 			}
 		}
 	}
+	@media screen and (max-width: 600px) {
+		position: relative;
+		min-height: none;
+		max-height: 100%;
+	}
 `;
 
 const variants = {
@@ -259,79 +292,77 @@ const Project = ({ projectItem, i }) => {
 	}, [controls, inView]);
 
 	return (
-		<>
-			<StyledContainer ref={ref}>
-				<StyledLeft>
-					<div>
-						<motion.h1
-							animate={controls}
-							variants={variants}
-							initial="hidden"
-							custom={2}
-						>
-							{projectItem.name}
-						</motion.h1>
-						<motion.p
-							animate={controls}
-							variants={variants}
-							initial="hidden"
-							custom={3}
-						>
-							{projectItem.intro}
-						</motion.p>
-						<motion.hr
-							animate={controls}
-							variants={variants}
-							initial="hidden"
-							custom={4}
-						></motion.hr>
-						<div>
-							<ul>
-								{projectItem.techs.map((item, i) => (
-									<motion.li
-										animate={controls}
-										variants={variants}
-										initial="hidden"
-										custom={5 + i}
-									>
-										<img
-											src={`../../../svg/svg-${techsMap[item]}.svg`}
-											alt="html"
-										/>
-										{_.capitalize(item)}
-									</motion.li>
-								))}
-							</ul>
-						</div>
-						<div className="project-link">
-							<a href={projectItem.links.github}>
-								<StyledGithub size="20" title="Github" />
-								<span>Github</span>
-							</a>
-							<span> - </span>
-							<a href={projectItem.links.demo}>
-								<StyledLink size="20" title="Link" />
-								<span>Demo</span>
-							</a>
-						</div>
-					</div>
-				</StyledLeft>
-				<StyledRight>
-					<motion.div
-						className="project-photo"
+		<StyledContainer ref={ref}>
+			<StyledLeft>
+				<div>
+					<motion.h1
 						animate={controls}
 						variants={variants}
 						initial="hidden"
-						custom={1}
+						custom={2}
 					>
-						<img
-							src={`../../../images/${projectItem.image}.png`}
-							alt={projectItem.image}
-						/>
-					</motion.div>
-				</StyledRight>
-			</StyledContainer>
-		</>
+						{projectItem.name}
+					</motion.h1>
+					<motion.p
+						animate={controls}
+						variants={variants}
+						initial="hidden"
+						custom={3}
+					>
+						{projectItem.intro}
+					</motion.p>
+					<motion.hr
+						animate={controls}
+						variants={variants}
+						initial="hidden"
+						custom={4}
+					></motion.hr>
+					<div>
+						<ul>
+							{projectItem.techs.map((item, i) => (
+								<motion.li
+									animate={controls}
+									variants={variants}
+									initial="hidden"
+									custom={5 + i}
+								>
+									<img
+										src={`../../../svg/svg-${techsMap[item]}.svg`}
+										alt="html"
+									/>
+									{_.capitalize(item)}
+								</motion.li>
+							))}
+						</ul>
+					</div>
+					<div className="project-link">
+						<a href={projectItem.links.github}>
+							<StyledGithub size="20" title="Github" />
+							<span>Github</span>
+						</a>
+						<span> - </span>
+						<a href={projectItem.links.demo}>
+							<StyledLink size="20" title="Link" />
+							<span>Demo</span>
+						</a>
+					</div>
+				</div>
+			</StyledLeft>
+			<StyledRight>
+				<motion.div
+					className="project-photo"
+					animate={controls}
+					variants={variants}
+					initial="hidden"
+					custom={1}
+				>
+					<img
+						src={`../../../images/${projectItem.image}.png`}
+						alt={projectItem.image}
+					/>
+				</motion.div>
+			</StyledRight>
+		</StyledContainer>
 	);
 };
 

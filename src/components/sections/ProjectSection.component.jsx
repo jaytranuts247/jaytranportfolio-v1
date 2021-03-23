@@ -55,6 +55,19 @@ const StyledSection = styled.section`
 			background: ${({ theme }) => theme.color.Secondary};
 		}
 	}
+
+	div.project-container {
+		width: 100%;
+		position: relative;
+		display: flex;
+		flex-direction: column;
+	}
+
+	@media screen and (max-width: 600px) {
+		div.project-container {
+			padding: 2rem;
+		}
+	}
 `;
 
 const variants = {
@@ -89,13 +102,15 @@ const ProjectSection = () => {
 			>
 				<span>03. </span>Things I've built.
 			</motion.h1>
-			{projectListInfo.map((projectItem, i) => (
-				<div>
-					{projectItem.featuredShow && (
-						<Project key={i} i={i} projectItem={projectItem} />
-					)}
-				</div>
-			))}
+			<div className="project-container">
+				{projectListInfo.map((projectItem, i) => (
+					<>
+						{projectItem.featuredShow && (
+							<Project key={i} i={i} projectItem={projectItem} />
+						)}
+					</>
+				))}
+			</div>
 		</StyledSection>
 	);
 };
