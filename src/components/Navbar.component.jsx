@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled, { css } from "styled-components";
-import { motion, AnimatePresence, useViewportScroll } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-scroll";
 import useScrollDirection from "../hooks/useScrollDirection";
 import useIsTop from "../hooks/useIsTop";

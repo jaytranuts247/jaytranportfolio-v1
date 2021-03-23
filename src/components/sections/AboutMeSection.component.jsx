@@ -234,7 +234,7 @@ const AboutMeSection = ({ animationDuration, animationDelay }) => {
 	}, [controls, inView, animationDelay]);
 
 	return (
-		<StyledSection>
+		<StyledSection id="about">
 			<StyledLeft>
 				<motion.h2
 					ref={ref}

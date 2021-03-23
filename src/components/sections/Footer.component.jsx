@@ -498,7 +498,7 @@ const Footer = () => {
 	};
 
 	return (
-		<StyledFooter>
+		<StyledFooter id="contact">
 			<motion.h1
 				custom={0}
 				animate={controls}

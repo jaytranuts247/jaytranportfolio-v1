@@ -175,7 +175,7 @@ const SkillsSection = () => {
 	}, [controls, inView]);
 
 	return (
-		<StyledSection>
+		<StyledSection id="skills">
 			<motion.h1
 				animate={controls}
 				initial="hidden"
