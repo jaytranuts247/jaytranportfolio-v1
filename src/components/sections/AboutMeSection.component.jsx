@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, Fragment } from "react";
 import styled from "styled-components";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
@@ -250,7 +250,7 @@ const AboutMeSection = ({ animationDuration, animationDelay }) => {
 					About Me
 				</motion.h2>
 				{aboutMeIntro.map((item, id) => (
-					<p key={id}>{item}</p>
+					<Fragment key={id}>{item}</Fragment>
 				))}
 			</StyledLeft>
 			<StyledRight>

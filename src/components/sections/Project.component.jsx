@@ -321,6 +321,7 @@ const Project = ({ projectItem, i }) => {
 						<ul>
 							{projectItem.techs.map((item, i) => (
 								<motion.li
+									key={i}
 									animate={controls}
 									variants={variants}
 									initial="hidden"

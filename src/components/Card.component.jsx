@@ -195,7 +195,7 @@ const Card = ({ image, name, intro, techs, links, forwardRef }) => {
 				<p className="project-intro">{intro}</p>
 				<ul>
 					{techs.map((tech, id) => (
-						<li>
+						<li key={id}>
 							<img src={`../../../svg/svg-${techsMap[tech]}.svg`} alt="html" />
 							{_.capitalize(tech)}
 						</li>

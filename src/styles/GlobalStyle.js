@@ -1,8 +1,6 @@
 import { createGlobalStyle } from "styled-components";
-import Fonts from "./fonts";
 
 const GlobalStyle = createGlobalStyle`
-  ${Fonts}
 
   :root {
     --rich-black-fogra-29: #011627ff;

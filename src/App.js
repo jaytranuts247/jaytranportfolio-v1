@@ -10,6 +10,7 @@ import OtherProjectSection from "./components/sections/OtherProjects.component";
 import Navbar from "./components/Navbar.component";
 
 import styled, { ThemeProvider } from "styled-components";
+import HelmetFonts from "./styles/HelmetFonts";
 
 import theme from "./styles/theme";
 
@@ -37,8 +38,9 @@ const settings = {
 
 function App() {
 	return (
-		<ThemeProvider theme={theme}>
-			<>
+		<>
+			<HelmetFonts />
+			<ThemeProvider theme={theme}>
 				<GlobalStyle />
 
 				<Navbar {...settings} />
@@ -53,8 +55,8 @@ function App() {
 					</StyledMain>
 					<Footer />
 				</StyledContent>
-			</>
-		</ThemeProvider>
+			</ThemeProvider>
+		</>
 	);
 }
 

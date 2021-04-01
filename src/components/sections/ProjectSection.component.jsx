@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, Fragment } from "react";
 import styled from "styled-components";
 import { motion, useAnimation } from "framer-motion";
 
@@ -104,11 +104,11 @@ const ProjectSection = () => {
 			</motion.h1>
 			<div className="project-container">
 				{projectListInfo.map((projectItem, i) => (
-					<>
+					<Fragment key={i}>
 						{projectItem.featuredShow && (
-							<Project key={i} i={i} projectItem={projectItem} />
+							<Project i={i} projectItem={projectItem} />
 						)}
-					</>
+					</Fragment>
 				))}
 			</div>
 		</StyledSection>
