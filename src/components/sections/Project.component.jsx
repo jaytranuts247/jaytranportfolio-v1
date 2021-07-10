@@ -363,6 +363,10 @@ const Project = ({ projectItem, i }) => {
 					custom={1}
 				>
 				{
+					projectItem.gifLink ? <img
+						src={projectItem.gifLink}
+						alt={projectItem.image}
+					/>:
 					projectItem.isGif ? (<img
 						src={`../../../images/${projectItem.image}.gif`}
 						alt={projectItem.image}
