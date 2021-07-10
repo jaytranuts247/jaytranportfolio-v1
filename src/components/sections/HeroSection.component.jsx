@@ -27,14 +27,14 @@ const StyledSection = styled.section`
 	}
 `;
 
-const StyledArrow = styled(motion.div)`
+const StyledArrow = styled(motion.ul)`
 	position: absolute;
 	bottom: 3%;
 	left: 50%;
 	transform: translate(-50%, -50%);
 `;
 
-const StyledSpan = styled(motion.span)`
+const StyledLi = styled(motion.li)`
 	display: block;
 	width: 10px;
 	height: 10px;
@@ -126,6 +126,7 @@ const HeroWrapper = styled.div`
 // 	},
 // };
 
+
 const HeroSection = ({
 	animationDuration,
 	animationDelay,
@@ -175,31 +176,32 @@ const HeroSection = ({
 					))}
 			</HeroWrapper>
 			<StyledArrow>
-				<StyledSpan
-					initial={{ rotate: 45 }}
+				<StyledLi
+					initial={{ y: -20, opacity: 0, rotate: 45}}
 					animate={{ y: [-20, -10, 0], opacity: [0, 1, 0] }}
 					transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
-				></StyledSpan>
-				<StyledSpan
-					initial={{ rotate: 45 }}
+				></StyledLi>
+				<StyledLi
+					initial={{ y: -20, opacity: 0, rotate: 45}}
 					animate={{ y: [-20, -10, 0], opacity: [0, 1, 0] }}
 					transition={{
 						repeat: Infinity,
 						duration: 2,
 						ease: "linear",
-						delay: 0.4,
+						delay: 2,
 					}}
-				></StyledSpan>
-				<StyledSpan
-					initial={{ rotate: 45 }}
+				></StyledLi>
+				<StyledLi
+					initial={{ y: -20, opacity: 0, rotate: 45}}
 					animate={{ y: [-20, -10, 0], opacity: [0, 1, 0] }}
 					transition={{
 						repeat: Infinity,
 						duration: 2,
 						ease: "linear",
-						delay: 0.8,
+						delay: 4,
 					}}
-				></StyledSpan>
+				></StyledLi>
+				
 			</StyledArrow>
 		</StyledSection>
 	);
@@ -214,3 +216,4 @@ export default HeroSection;
 <StyledSpan key={2} variants={arrowItem} y={10}></StyledSpan>
 </StyledArrow>
 */
+
