@@ -194,6 +194,7 @@ const StyledRight = styled.div`
 		overflow: hidden;
 
 		img {
+			position: relative;
 			height: 100%;
 			width: 100%;
 			object-fit: cover;
@@ -212,14 +213,16 @@ const StyledRight = styled.div`
 			background: linear-gradient(90deg, #d53369b2 0%, #daae51b2 100%);
 			opacity: 1;
 			transition: all 0.8s ease-out;
+			z-index:1;
 		}
 
 		&:hover::before {
 			/* background: ${({ theme }) => theme.color.Secondary + "00"}; */
 			opacity: 0;
+			/* z-index: 10; */
 		}
 		&:hover > img {
-			z-index: 10;
+			z-index: 20;
 			transform: scale(0.99);
 		}
 	}
