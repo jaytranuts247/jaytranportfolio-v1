@@ -18,10 +18,24 @@ export const techsMap = {
 
 export const projectListInfo = [
 	{
+		name: "BnbConnect",
+		image: "bnbconnect_demo",
+		isGif: true,
+		intro:
+		[	"BnbConnect is a single-page, full-stack web application modeled after Airbnb and made to focus helping individual to effectively plan their trip. It use React.js and Redux for front-end and Node.js and MongoDB in the back-end. The website hosted on Heroku."],
+		techs: ["html", "sass", "react"],
+		links: {
+			github: "https://github.com/jaytranuts247/bnbconnect",
+			demo: "https://bnbconnect.herokuapp.com/",
+		},
+		featuredShow: true,
+	},
+	{
 		name: "Steak Awesome Restaurant",
 		image: "steak_awesome_restaurant",
+		isGif: false,
 		intro:
-			"I make premium landing page for a luxurious steak house restaurant including a nice looking carousel.",
+		[	"I make premium landing page for a luxurious steak house restaurant including a nice looking carousel."],
 		techs: ["html", "sass", "react"],
 		links: {
 			github: "https://github.com/jaytranuts247/steakhouse_restaurent",
@@ -32,8 +46,9 @@ export const projectListInfo = [
 	{
 		name: "Weather App",
 		image: "weather_app",
+		isGif: false,
 		intro:
-			"I make a simple weather forcasting website with react, html, and css.",
+		[	"I make a simple weather forcasting website with react, html, and css."],
 		techs: ["html", "css", "react"],
 		links: {
 			github: "https://github.com/jaytranuts247/weatherApp",
@@ -44,7 +59,8 @@ export const projectListInfo = [
 	{
 		name: "Natour",
 		image: "natour",
-		intro: "I make a tour landing page with html, css, and js",
+		isGif: false,
+		intro: ["I make a tour landing page with html, css, and js"],
 		techs: ["html", "sass", "javascript"],
 		links: {
 			github: "https://github.com/jaytranuts247/natour",
@@ -55,7 +71,8 @@ export const projectListInfo = [
 	{
 		name: "Github Finder",
 		image: "github_finder",
-		intro: "I make a tool for finding profiles on github",
+		isGif: false,
+		intro: ["I make a tool for finding profiles on github"],
 		techs: ["html", "css", "react"],
 		links: {
 			github: "https://github.com/jaytranuts247/RFTB-GitHUb-Finder",
@@ -65,8 +82,8 @@ export const projectListInfo = [
 	},
 	{
 		name: "Contact Keeper",
-		image: "contact_keeper",
-		intro: "I make a tool to save contact with login.",
+		image: "contact_keeper",	isGif: false,
+		intro: ["I make a tool to save contact with login."],
 		techs: ["html", "css", "react", "nodejs", "mongodb"],
 		links: {
 			github: "https://github.com/jaytranuts247/RFTB-ContactKeeper",
@@ -88,8 +105,11 @@ export const projectListInfo = [
 	// },
 	{
 		name: "E-Commerce",
-		image: "e-commerce",
-		intro: "I make an E-commerce app with login, cart, and payment.",
+		image: "e-commerce",	isGif: false,
+		intro: ["Leverage Redux as state management storing all fashion products to provide a seamlessly user experience.",
+			"Deploy Firebase to drive back-end operations, including user authentication with Firebase Authentication, storing user information, and all fashion collection items with FireStore Database.",
+			"Integrated Stripe to enable user to securely make payment for all products added to shopping cart."
+			],
 		techs: ["html", "css", "react", "redux", "reduxSaga", "firebase"],
 		links: {
 			github: "https://github.com/jaytranuts247/E-commerce",
@@ -99,8 +119,8 @@ export const projectListInfo = [
 	},
 	{
 		name: "Keeper-App",
-		image: "keeper-app",
-		intro: "I make an Keeper App clone with Masonry layout.",
+		image: "keeper-app",	isGif: false,
+		intro: ["I make an Keeper App clone with Masonry layout."],
 		techs: ["html", "css", "react", "mongodb", "nodejs"],
 		links: {
 			github: "https://github.com/jaytranuts247/Keeper-App-v2",
@@ -110,8 +130,8 @@ export const projectListInfo = [
 	},
 	{
 		name: "Snake Game",
-		image: "snakegame",
-		intro: "I make a simple snake game with html, css, and js",
+		image: "snakegame",	isGif: false,
+		intro: ["I make a simple snake game with html, css, and js"],
 		techs: ["html", "css", "javascript"],
 		links: {
 			github: "https://github.com/jaytranuts247/snakegame",
@@ -121,8 +141,8 @@ export const projectListInfo = [
 	},
 	{
 		name: "Simon Game",
-		image: "simongame",
-		intro: "I make a simple simon game with html, css, and js",
+		image: "simongame",	isGif: false,
+		intro: ["I make a simple simon game with html, css, and js"],
 		techs: ["html", "css", "javascript"],
 		links: {
 			github: "https://github.com/jaytranuts247/SimonGame",

@@ -219,6 +219,7 @@ const StyledRight = styled.div`
 			opacity: 0;
 		}
 		&:hover > img {
+			z-index: 10;
 			transform: scale(0.99);
 		}
 	}
@@ -281,6 +282,7 @@ const variants = {
 	},
 };
 
+
 const Project = ({ projectItem, i }) => {
 	const { ref, inView } = useInView();
 	const controls = useAnimation();
@@ -309,7 +311,7 @@ const Project = ({ projectItem, i }) => {
 						initial="hidden"
 						custom={3}
 					>
-						{projectItem.intro}
+						{projectItem.intro.map(item => <li>{item}</li>)}
 					</motion.p>
 					<motion.hr
 						animate={controls}
@@ -357,10 +359,17 @@ const Project = ({ projectItem, i }) => {
 					initial="hidden"
 					custom={1}
 				>
-					<img
+				{
+					projectItem.isGif ? (<img
+						src={`../../../images/${projectItem.image}.gif`}
+						alt={projectItem.image}
+					/>):(<img
 						src={`../../../images/${projectItem.image}.png`}
 						alt={projectItem.image}
-					/>
+					/>)
+				}
+				
+				
 				</motion.div>
 			</StyledRight>
 		</StyledContainer>
