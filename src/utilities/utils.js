@@ -13,7 +13,10 @@ export const techsMap = {
   vsc: 15,
   express: 8,
   firebase: 19,
-  graphql: 20
+  graphql: 20,
+  chartjs: 21,
+  materialui: 22,
+  leaflet: 23
 };
 
 export const projectListInfo = [
@@ -54,7 +57,7 @@ export const projectListInfo = [
       "https://bnbconnect.s3.us-east-2.amazonaws.com/steak_awesome_restaurent+(1).gif",
     isGif: true,
     intro: [
-      "I make premium landing page for a luxurious steak house restaurant including a nice looking carousel."
+      "A Luxurious 5-stars Steak Restaurant Landing Page, integrated with beautiful smooth-animated Carousel. Made by React and advanced SCSS."
     ],
     techs: ["html", "sass", "react"],
     links: {
@@ -64,12 +67,27 @@ export const projectListInfo = [
     featuredShow: true
   },
   {
+    name: "Covid-19 Tracker",
+    image: "covid19_tracker",
+    isGif: false,
+    gifLink: null,
+    intro: [
+      "A Covid-19 tracker SPA made by react, chart.js, leaflet map to illustrate covid cases worldwide, and for each country geographically."
+    ],
+    techs: ["html", "css", "react", "materialui", "chartjs", "leaflet"],
+    links: {
+      github: "https://github.com/jaytranuts247/covid-tracker",
+      demo: "https://covid-19-tracker-app-111b2.web.app/"
+    },
+    featuredShow: false
+  },
+  {
     name: "Weather App",
     image: "weather_app",
     isGif: false,
     gifLink: null,
     intro: [
-      "I make a simple weather forcasting website with react, html, and css."
+      "Simple Weather forcast app that allow users search for weather conditions worldwide. Weather data is provided from Open Weather APIs"
     ],
     techs: ["html", "css", "react"],
     links: {
@@ -83,7 +101,9 @@ export const projectListInfo = [
     image: "natour",
     isGif: false,
     gifLink: null,
-    intro: ["I make a tour landing page with html, css, and js"],
+    intro: [
+      "Simple travel landing page ceated React, advanced CSS and HTML. Following BEM best practices to create code that well organized, readable, and scalable."
+    ],
     techs: ["html", "sass", "javascript"],
     links: {
       github: "https://github.com/jaytranuts247/natour",
@@ -96,7 +116,9 @@ export const projectListInfo = [
     image: "github_finder",
     isGif: false,
     gifLink: null,
-    intro: ["I make a tool for finding profiles on github"],
+    intro: [
+      "Github finder is webapp to help users search for other users account on github. Using react-router-dom to enable user to navigate through different pages."
+    ],
     techs: ["html", "css", "react"],
     links: {
       github: "https://github.com/jaytranuts247/RFTB-GitHUb-Finder",
@@ -109,7 +131,9 @@ export const projectListInfo = [
     image: "contact_keeper",
     isGif: false,
     gifLink: null,
-    intro: ["I make a tool to save contact with login."],
+    intro: [
+      "Contact Keeper App is a MERN Stack app that allows users to login, sign up, create, edit, and delete contacts information."
+    ],
     techs: ["html", "css", "react", "nodejs", "mongodb"],
     links: {
       github: "https://github.com/jaytranuts247/RFTB-ContactKeeper",
@@ -135,9 +159,7 @@ export const projectListInfo = [
     isGif: false,
     gifLink: null,
     intro: [
-      "Leverage Redux as state management storing all fashion products to provide a seamlessly user experience.",
-      "Deploy Firebase to drive back-end operations, including user authentication with Firebase Authentication, storing user information, and all fashion collection items with FireStore Database.",
-      "Integrated Stripe to enable user to securely make payment for all products added to shopping cart."
+      "A full-stack ecommerce web application allowing fashion lover to do online shopping and make payment with Stripe. leverage Redux and Redux Saga for statemanagement on Frontend and using Firebase as Backend for user authentication and  storing shop data. "
     ],
     techs: ["html", "css", "react", "redux", "reduxSaga", "firebase"],
     links: {
@@ -151,7 +173,9 @@ export const projectListInfo = [
     image: "keeper-app",
     isGif: false,
     gifLink: null,
-    intro: ["I make an Keeper App clone with Masonry layout."],
+    intro: [
+      "Keer-app is a MERN Stack SPA that modeled from Keeper Note App from Google. That allows user to sign up, login, create, edit, delete notes with beautiful masonry layout."
+    ],
     techs: ["html", "css", "react", "mongodb", "nodejs"],
     links: {
       github: "https://github.com/jaytranuts247/Keeper-App-v2",
@@ -186,3 +210,26 @@ export const projectListInfo = [
     featuredShow: false
   }
 ];
+
+/**
+ * Checking if an image exist in your image folder
+ */
+export const loadImage = (variable) => {
+  var imageSVG = new Image();
+  var imagePNG = new Image();
+  var url_image_svg = "../../../svg/svg-" + variable + ".svg";
+  var url_image_png = "../../../svg/svg-" + variable + ".png";
+
+  imageSVG.src = url_image_svg;
+  imagePNG.src = url_image_png;
+
+  console.log("image source width", variable, imageSVG.width, imagePNG.width);
+
+  if (imageSVG.width !== 0) {
+    return <img src={`../../../svg/svg-${variable}.svg`} alt="" />;
+  } else if (imagePNG.width !== 0) {
+    return <img src={`../../../svg/svg-${variable}.png`} alt="" />;
+  } else {
+    return <img src={`../../../svg/svg-9.svg`} alt="" />; // default react icon
+  }
+};

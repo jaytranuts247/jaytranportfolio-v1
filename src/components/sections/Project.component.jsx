@@ -6,7 +6,7 @@ import _ from "lodash";
 import { LinkAlt } from "@styled-icons/boxicons-regular/LinkAlt";
 import { Github } from "@styled-icons/fa-brands/Github";
 
-import { techsMap } from "../../utilities/utils";
+import { loadImage, techsMap } from "../../utilities/utils";
 import { useInView } from "react-intersection-observer";
 
 const StyledGithub = styled(Github)`
@@ -338,10 +338,7 @@ const Project = ({ projectItem, i }) => {
                   initial="hidden"
                   custom={5 + i}
                 >
-                  <img
-                    src={`../../../svg/svg-${techsMap[item]}.svg`}
-                    alt="html"
-                  />
+                  {loadImage(techsMap[item])}
                   {_.capitalize(item)}
                 </motion.li>
               ))}
